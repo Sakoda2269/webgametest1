@@ -1,6 +1,7 @@
 import json
 import random
 from collections import defaultdict
+import math
  
 from channels.generic.websocket import AsyncWebsocketConsumer
  
@@ -43,10 +44,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
             print(data["name"] + " joined!")
 
         if data["method"] == "updata":
-            pos_x = data["pos_x"]
+            pos_x = data["possd_x"]
             pos_y = data["pos_y"]
             pos_z = data["pos_z"]
-            rotate_y = data["rotate_y"]
+            rotate_y = math.degrees(float(data["rotate_y"]))
             id = data["id"]
             self.joined[id] = [pos_x, pos_y, pos_z, 0, rotate_y, 0]
             send_data = self.joined[id]
