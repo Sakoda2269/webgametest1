@@ -44,7 +44,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             print(data["name"] + " joined!")
 
         if data["method"] == "updata":
-            pos_x = data["possd_x"]
+            pos_x = data["pos_x"]
             pos_y = data["pos_y"]
             pos_z = data["pos_z"]
             rotate_y = math.degrees(float(data["rotate_y"]))
