@@ -57,7 +57,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             pos_x = data["pos_x"]
             pos_y = data["pos_y"]
             pos_z = data["pos_z"]
-            rotate_y = math.degrees(float(data["rotate_y"]))
+            rotate_y = data["rotate_y"]
             updata_id = data["id"]
             self.joined[updata_id] = [pos_x, pos_y, pos_z, 0, rotate_y, 0]
             send_data = self.joined[updata_id]
