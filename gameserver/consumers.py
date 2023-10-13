@@ -80,6 +80,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
             await self.channel_layer.group_send( #メッセージを送信(chat_message()を使用?)
                 self.room_group_name, {"type": "chat_message", "method": "shot", "id" : shot_id, "data" : send_data}
             )
+        
+        if data["method"] == "dead":
+            dead_id = data["id"]
+            print(dead_id, "dead!")
+            send_data = {}
+            await self.channel_layer.group_send( #メッセージを送信(chat_message()を使用?)
+            
+                self.room_group_name, {"type": "chat_message", "method": "dead", "id" : dead_id, "data" : send_data}
+            )
 
             
  
