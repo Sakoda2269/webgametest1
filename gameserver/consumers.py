@@ -71,11 +71,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
             pos_z = data["pos_z"]
             rotate_y = data["rotate_y"]
             shot_id = data["id"]
+            gun_name = data["gun_name"]
             send_data = {
                 "pos_x":pos_x,
                 "pos_y":pos_y,
                 "pos_z":pos_z,
-                "rotate_y":rotate_y
+                "rotate_y":rotate_y,
+                "gun_name":gun_name,
             }
             await self.channel_layer.group_send( #メッセージを送信(chat_message()を使用?)
                 self.room_group_name, {"type": "chat_message", "method": "shot", "id" : shot_id, "data" : send_data}
